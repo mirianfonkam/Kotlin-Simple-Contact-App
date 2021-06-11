@@ -11,12 +11,10 @@ import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
-    //Array with all contacts
-    var allContacts : MutableList<Contact> = mutableListOf()
-
     var typeSelected : Int = 0
     private lateinit var infoContactType : TextInputLayout
     private lateinit var infoIn : TextInputEditText
+    private lateinit var contactsOut: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         //Hint Modification Global
         infoContactType = findViewById(R.id.info_hint)
 
+        //Text Output
+        contactsOut = findViewById(R.id.contacts_out)
+
         btnSave.setOnClickListener {
             val name = nameIn.text.toString()
             val phone_number = phoneIn.text.toString()
@@ -44,24 +45,27 @@ class MainActivity : AppCompatActivity() {
 
             if (typeSelected != 0) {
                 if (typeSelected == 1) {
-                    allContacts.add(ProfessionalContact(name, phone_number, info))
+                    ProfessionalContact(name, phone_number, info)
                 }
 
                 if (typeSelected == 2) {
-                    allContacts.add(PersonalContact(name, phone_number, info))
+                    PersonalContact(name, phone_number, info)
                 }
             }
 
             Toast.makeText(this,
-                (allContacts.last()).toString(),
+                (Contact.Companion.allContacts.last()).toString(),
                 Toast.LENGTH_LONG).show()
+
+            contactsOut.text = (Contact.printAllContactsSorted())
+
         }
 
         btnSearch.setOnClickListener {
             val nameSearched = searchIn.text.toString()
 
-            val result = allContacts.find {
-                it.name == nameSearched
+            val result =  Contact.Companion.allContacts.find {
+                (it.name).contains(nameSearched)
             }
 
             if (result != null) {
@@ -75,12 +79,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
     }
 
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
 
-            //Caso especial pra Radio B(urro)utton
             val btnChecked = view.isChecked
 
             when (view.id) {
@@ -101,11 +105,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // TO DO: Display Contacts in alphabetical order as a Text View
-
-    //   contacts.sortedBy { it.name }
-
-    // TO DO: Create button "Show all contacts" / modify visibilibity
+    // TO DO: Create button "Show all contacts" / modify visibilibity to hidden
+    // Display found contact or return to show all contacts
 
 
 
