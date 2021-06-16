@@ -107,7 +107,4 @@ class MainActivity : AppCompatActivity() {
 
     // TO DO: Create button "Show all contacts" / modify visibilibity to hidden
     // Display found contact or return to show all contacts
-
-
-
 }
