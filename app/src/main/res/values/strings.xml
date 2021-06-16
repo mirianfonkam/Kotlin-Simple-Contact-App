@@ -6,4 +6,6 @@
     <string name="professional">Professional</string>
     <string name="personal">Personal</string>
     <string name="save">Save</string>
+    <string name="hint_contact_list">The List is Empty</string>
+    <string name="fabDescription">button next activity</string>
 </resources>
