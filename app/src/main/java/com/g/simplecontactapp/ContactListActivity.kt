@@ -17,8 +17,8 @@ class ContactListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.contact_list)
 
-        val btnSearch = findViewById<ImageButton>(R.id.btn_search)
-        val searchIn = findViewById<EditText>(R.id.search_in)
+        val btnSearch = findViewById<ImageButton>(R.id.btnSearch)
+        val searchIn = findViewById<EditText>(R.id.etSearch)
         val fabPrevious = findViewById<FloatingActionButton>(R.id.fabPrevious)
 
         //Text Output

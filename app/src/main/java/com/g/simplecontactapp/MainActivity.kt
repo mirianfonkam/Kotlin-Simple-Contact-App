@@ -21,16 +21,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.contact_registration)
 
         //Text Input Fields
-        val nameIn = findViewById<TextInputEditText>(R.id.name_in)
-        val phoneIn = findViewById<TextInputEditText>(R.id.phonenum_in)
-        infoIn = findViewById(R.id.info_in)
+        val nameIn = findViewById<TextInputEditText>(R.id.etName)
+        val phoneIn = findViewById<TextInputEditText>(R.id.etPhoneNum)
+        infoIn = findViewById(R.id.etContactInfo)
 
         //Buttons
-        val btnSave = findViewById<Button>(R.id.btn_save)
+        val btnSave = findViewById<Button>(R.id.btnSave)
         val fabNext = findViewById<FloatingActionButton>(R.id.fabNext)
 
         //Hint Modification Global
-        infoContactType = findViewById(R.id.info_hint)
+        infoContactType = findViewById(R.id.layoutEtContactInfo)
 
 
 
@@ -73,13 +73,13 @@ class MainActivity : AppCompatActivity() {
             val btnChecked = view.isChecked
 
             when (view.id) {
-                R.id.cPro ->
+                R.id.rbProType ->
                     if (btnChecked) {
                         typeSelected = 1
                         infoContactType.hint = "Email"
                         infoIn.inputType =  InputType.TYPE_CLASS_TEXT
                     }
-                R.id.cPersonal -> {
+                R.id.rbPersonalType -> {
                     if (btnChecked) {
                         typeSelected = 2
                         infoContactType.hint = "Notes"
